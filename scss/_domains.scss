@@ -1,0 +1,52 @@
+.domains-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    
+    .iconsvg {
+        stroke: white;
+        stroke-width: 3px;
+        width: 120px;
+        height: 120px;
+    }
+
+    // // Small devices (landscape phones, 576px and up)
+    // @media (min-width: 576px) {
+    //     .iconsvg {
+    //         width: 128px;
+    //         height: 128px;
+    //     }
+
+    // }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+        .iconsvg {
+            width: 88px;
+            height: 88px;
+        }
+        .domain-text {
+            font-size: 60%;
+        }
+    }
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+        .iconsvg {
+            width: 120px;
+            height: 120px;
+        }
+        .domain-text {
+            font-size: 80%;
+        }        
+    }
+
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+        // .iconsvg {
+        //     width: 128px;
+        //     height: 128px;
+        // }
+        .domain-text {
+            font-size: 100%;
+        }        
+    }
+}
