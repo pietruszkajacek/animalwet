@@ -1,5 +1,6 @@
 "use strict";
 
+
 // Load plugins
 const autoprefixer = require("gulp-autoprefixer");
 const browsersync = require("browser-sync").create();
@@ -10,7 +11,7 @@ const header = require("gulp-header");
 const merge = require("merge-stream");
 const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+const sass = require('gulp-sass')(require('sass'));
 const uglify = require("gulp-uglify");
 
 // Load package.json for banner
@@ -18,7 +19,9 @@ const pkg = require('./package.json');
 
 // Set the banner content
 const banner = ['/*!\n',
-  ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
+  ' * <%= pkg.title %> - v<%= pkg.version %> (<%= pkg.homepage %>)\n',
+  ' * Copyright 2019-' + (new Date()).getFullYear(), ' Jacek Pietruszka (https://webdevlab.eu)\n',
+  ' *\n',
   ' * Copyright 2013-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
   ' * Licensed under <%= pkg.license %> (https://github.com/BlackrockDigital/<%= pkg.name %>/blob/master/LICENSE)\n',
   ' */\n',
@@ -31,7 +34,8 @@ function browserSync(done) {
     server: {
       baseDir: "./"
     },
-    port: 3000
+    port: 3000,
+    open: false
   });
   done();
 }
@@ -63,9 +67,9 @@ function modules() {
     .pipe(gulp.dest('./vendor/jquery-easing'));
   // jQuery
   var jquery = gulp.src([
-      './node_modules/jquery/dist/*',
-      '!./node_modules/jquery/dist/core.js'
-    ])
+    './node_modules/jquery/dist/*',
+    '!./node_modules/jquery/dist/core.js'
+  ])
     .pipe(gulp.dest('./vendor/jquery'));
   return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing);
 }
